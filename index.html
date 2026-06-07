@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ProdFoundry — The production-hardening curriculum that turns junior developers into engineers who build things that actually survive the real world.">
+  <title>ProdFoundry — Production Hardening for Real Engineers</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e5ff'/><text x='6' y='22' font-size='16' font-weight='900' font-family='monospace' fill='%23080a0d'>PF</text></svg>">
+</head>
+<body>
+
+<!-- ── Ambient Overlays ────────────────────────────────────── -->
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<!-- ── Navigation ─────────────────────────────────────────── -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="ProdFoundry Home">
+    <div class="nav-logo-mark" aria-hidden="true">PF</div>
+    ProdFoundry
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#pillars">Curriculum</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+  </ul>
+  <a href="labs.html" class="btn btn-primary nav-cta" aria-label="Enter the Hardening Labs">
+    ⬡ Enter Labs
+  </a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-headline">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="glow-orb" aria-hidden="true"></div>
+  <div class="glow-orb" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-content">
+
+      <div class="hero-status" role="status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        Labs Online · v2.4.1 · 4 Active Modules
+      </div>
+
+      <h1 class="hero-headline" id="hero-headline">
+        Build things that<br>
+        <span class="line-accent">actually survive</span><br>
+        the real world.
+      </h1>
+
+      <p class="hero-subtitle">
+        ProdFoundry is the curriculum missing from every bootcamp.
+        Learn to harden, secure, optimize, and ship software that
+        doesn't collapse under its first load spike.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="labs.html" class="btn btn-primary" aria-label="Enter the interactive Hardening Labs">
+          ⬡ Enter the Hardening Labs
+        </a>
+        <a href="#pillars" class="btn btn-ghost" aria-label="View the 4 curriculum pillars">
+          View Curriculum
+        </a>
+      </div>
+
+      <div class="hero-meta" role="list" aria-label="Platform statistics">
+        <span role="listitem">
+          <span aria-hidden="true">⬡</span> 4 Pillars
+        </span>
+        <span role="listitem">
+          <span aria-hidden="true">◈</span> 12 Lab Challenges
+        </span>
+        <span role="listitem">
+          <span aria-hidden="true">◎</span> Browser-Only
+        </span>
+        <span role="listitem">
+          <span aria-hidden="true">○</span> Zero Dependencies
+        </span>
+      </div>
+    </div>
+
+    <!-- Terminal Decoration -->
+    <div class="hero-terminal" aria-hidden="true" role="presentation">
+      <div class="terminal-bar">
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <span class="terminal-title">prod-stress-test · bash</span>
+      </div>
+      <div class="terminal-body" id="hero-terminal-body">
+        <!-- JS populates this -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     THE PROBLEM SECTION
+═══════════════════════════════════════════════════════════ -->
+<section class="problem-section" id="problem" aria-labelledby="problem-heading">
+  <div class="container">
+    <div class="section-label" aria-hidden="true">// The Problem</div>
+
+    <div class="problem-grid">
+      <div class="problem-text reveal">
+        <h2 id="problem-heading">
+          Bootcamps teach you to make it <em>work</em>.<br>
+          Nobody teaches you to make it <em>survive</em>.
+        </h2>
+        <p>
+          The standard curriculum ends at <code>console.log("it works!")</code>.
+          You learn to fetch data — but never handle the API being down.
+          You learn to write forms — but never sanitize the inputs.
+          You learn to add images — but never optimize a single one.
+        </p>
+        <p>
+          When your code hits a real user — on a 3G connection in Nairobi,
+          with a VPN throttling their packets, submitting your form for the
+          twelfth time — it doesn't fail gracefully. It just fails.
+        </p>
+        <p>
+          ProdFoundry closes the gap. Every lab puts your code under real
+          stress and teaches you exactly what breaks, why it breaks, and
+          how production engineers prevent it.
+        </p>
+      </div>
+
+      <div class="problem-contrast reveal">
+        <div class="contrast-card fail" role="region" aria-labelledby="fail-card-title">
+          <h4 id="fail-card-title">❌ Bootcamp Graduate</h4>
+          <ul class="contrast-list" aria-label="What bootcamps teach">
+            <li>Fetches data with no error handling</li>
+            <li>Stores user tokens in localStorage in plain text</li>
+            <li>Renders 4MB uncompressed images</li>
+            <li>Attaches scroll listeners without debouncing</li>
+            <li>No ARIA attributes on any interactive element</li>
+            <li>One network failure crashes the entire UI</li>
+            <li>Promise rejections silently disappear</li>
+          </ul>
+        </div>
+        <div class="contrast-card pass" role="region" aria-labelledby="pass-card-title">
+          <h4 id="pass-card-title">✓ ProdFoundry Engineer</h4>
+          <ul class="contrast-list" aria-label="What ProdFoundry teaches">
+            <li>try/catch + fallback UI for every async op</li>
+            <li>Sanitized inputs, no raw HTML injection</li>
+            <li>Lazy-loaded, compressed, next-gen image formats</li>
+            <li>Every high-frequency listener is debounced</li>
+            <li>Semantic HTML + full ARIA implementation</li>
+            <li>Offline-first strategy with graceful degradation</li>
+            <li>Unhandled rejection global interceptors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     THE 4 PILLARS SECTION
+═══════════════════════════════════════════════════════════ -->
+<section class="pillars-section" id="pillars" aria-labelledby="pillars-heading">
+  <div class="container">
+    <div class="pillars-header reveal">
+      <div class="section-label" aria-hidden="true">// Curriculum</div>
+      <h2 id="pillars-heading">The Four Pillars of Production Readiness</h2>
+      <p>
+        Every challenge is designed around a real-world failure mode.
+        You don't just learn the fix — you feel the break first.
+      </p>
+    </div>
+
+    <div class="pillars-grid" role="list" aria-label="Curriculum pillars">
+
+      <!-- Pillar 1: Reliability -->
+      <article
+        class="pillar-card reveal"
+        data-pillar="reliability"
+        role="listitem"
+        tabindex="0"
+        aria-labelledby="pillar-reliability-title"
+        onclick="window.location='labs.html?lab=reliability'"
+        onkeypress="if(event.key==='Enter') window.location='labs.html?lab=reliability'"
+      >
+        <div class="pillar-icon" aria-hidden="true">⟳</div>
+        <div class="pillar-number">Pillar 01</div>
+        <h3 class="pillar-title" id="pillar-reliability-title">Reliability</h3>
+        <p class="pillar-desc">
+          Production systems fail. APIs go down, promises reject, network
+          packets vanish. Reliable code doesn't crash — it degrades
+          gracefully and recovers automatically.
+        </p>
+        <div class="pillar-skills" role="list" aria-label="Skills covered">
+          <span class="pillar-skill-tag" role="listitem">try/catch</span>
+          <span class="pillar-skill-tag" role="listitem">API Fallbacks</span>
+          <span class="pillar-skill-tag" role="listitem">Retry Logic</span>
+          <span class="pillar-skill-tag" role="listitem">Offline States</span>
+          <span class="pillar-skill-tag" role="listitem">Promise Guards</span>
+        </div>
+        <span class="pillar-hover-label" aria-hidden="true">Enter Lab →</span>
+      </article>
+
+      <!-- Pillar 2: Security -->
+      <article
+        class="pillar-card reveal"
+        data-pillar="security"
+        role="listitem"
+        tabindex="0"
+        aria-labelledby="pillar-security-title"
+        onclick="window.location='labs.html?lab=security'"
+        onkeypress="if(event.key==='Enter') window.location='labs.html?lab=security'"
+      >
+        <div class="pillar-icon" aria-hidden="true">⬡</div>
+        <div class="pillar-number">Pillar 02</div>
+        <h3 class="pillar-title" id="pillar-security-title">Security</h3>
+        <p class="pillar-desc">
+          Every unescaped input is a potential injection vector. Every
+          localStorage key is a potential data leak. This pillar teaches you
+          to think like an attacker before the attacker finds you.
+        </p>
+        <div class="pillar-skills" role="list" aria-label="Skills covered">
+          <span class="pillar-skill-tag" role="listitem">XSS Prevention</span>
+          <span class="pillar-skill-tag" role="listitem">Input Sanitization</span>
+          <span class="pillar-skill-tag" role="listitem">CSP Headers</span>
+          <span class="pillar-skill-tag" role="listitem">Safe Storage</span>
+          <span class="pillar-skill-tag" role="listitem">CSRF Patterns</span>
+        </div>
+        <span class="pillar-hover-label" aria-hidden="true">Enter Lab →</span>
+      </article>
+
+      <!-- Pillar 3: Scalability -->
+      <article
+        class="pillar-card reveal"
+        data-pillar="scalability"
+        role="listitem"
+        tabindex="0"
+        aria-labelledby="pillar-scalability-title"
+        onclick="window.location='labs.html?lab=scalability'"
+        onkeypress="if(event.key==='Enter') window.location='labs.html?lab=scalability'"
+      >
+        <div class="pillar-icon" aria-hidden="true">◈</div>
+        <div class="pillar-number">Pillar 03</div>
+        <h3 class="pillar-title" id="pillar-scalability-title">Scalability</h3>
+        <p class="pillar-desc">
+          Code that works fine for one user can brick a browser with ten
+          concurrent requests. Learn to write frontend code that gets faster
+          as it gets bigger — not slower.
+        </p>
+        <div class="pillar-skills" role="list" aria-label="Skills covered">
+          <span class="pillar-skill-tag" role="listitem">Image Optimization</span>
+          <span class="pillar-skill-tag" role="listitem">Lazy Loading</span>
+          <span class="pillar-skill-tag" role="listitem">Debouncing</span>
+          <span class="pillar-skill-tag" role="listitem">Code Splitting</span>
+          <span class="pillar-skill-tag" role="listitem">Memoization</span>
+        </div>
+        <span class="pillar-hover-label" aria-hidden="true">Enter Lab →</span>
+      </article>
+
+      <!-- Pillar 4: UX -->
+      <article
+        class="pillar-card reveal"
+        data-pillar="ux"
+        role="listitem"
+        tabindex="0"
+        aria-labelledby="pillar-ux-title"
+        onclick="window.location='labs.html?lab=ux'"
+        onkeypress="if(event.key==='Enter') window.location='labs.html?lab=ux'"
+      >
+        <div class="pillar-icon" aria-hidden="true">◎</div>
+        <div class="pillar-number">Pillar 04</div>
+        <h3 class="pillar-title" id="pillar-ux-title">User Experience</h3>
+        <p class="pillar-desc">
+          A 200ms delay feels like 1 second to a user who doesn't see feedback.
+          Perceived performance, skeleton loaders, and ARIA aren't polish —
+          they're the baseline for any product that respects its users.
+        </p>
+        <div class="pillar-skills" role="list" aria-label="Skills covered">
+          <span class="pillar-skill-tag" role="listitem">Skeleton Loaders</span>
+          <span class="pillar-skill-tag" role="listitem">ARIA Roles</span>
+          <span class="pillar-skill-tag" role="listitem">Focus Management</span>
+          <span class="pillar-skill-tag" role="listitem">Perf. Budgets</span>
+          <span class="pillar-skill-tag" role="listitem">Loading States</span>
+        </div>
+        <span class="pillar-hover-label" aria-hidden="true">Enter Lab →</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ARCHITECTURE SECTION
+═══════════════════════════════════════════════════════════ -->
+<section class="arch-section" id="architecture" aria-labelledby="arch-heading">
+  <div class="container">
+    <div class="section-label" aria-hidden="true">// Platform Architecture</div>
+
+    <div class="arch-grid">
+      <div class="arch-text reveal">
+        <h2 id="arch-heading">
+          Runs entirely in your browser.<br>No servers. No setup.
+        </h2>
+        <p>
+          ProdFoundry is a fully client-side application. Every lab runs
+          inside a sandboxed JavaScript simulation engine — real code
+          patterns, real failure scenarios, zero backend.
+        </p>
+        <p>
+          The Verification Engine parses the code you write in the editor
+          using pattern-matching against a curated set of production
+          keywords and structures. It doesn't just check syntax — it checks
+          for the <em>intent</em> of production-ready engineering.
+        </p>
+        <p>
+          The Chaos Monitor visualizes simulated runtime metrics — CPU
+          pressure, promise rejection rates, render throughput — so you
+          can see the consequence of every architectural decision you make.
+        </p>
+      </div>
+
+      <div class="arch-diagram reveal" aria-label="Platform architecture diagram" role="img">
+        <div class="section-label" style="margin-bottom: var(--space-4);">client-side execution stack</div>
+
+        <div class="arch-layer" role="listitem">
+          <div class="arch-layer-dot" style="background: var(--accent);" aria-hidden="true"></div>
+          <div>
+            <div class="arch-layer-title">Browser Runtime · V8 / SpiderMonkey</div>
+          </div>
+          <div class="arch-layer-desc">Host Env</div>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">↕ eval sandbox</div>
+
+        <div class="arch-layer" role="listitem">
+          <div class="arch-layer-dot" style="background: var(--green);" aria-hidden="true"></div>
+          <div>
+            <div class="arch-layer-title">ProdFoundry Verification Engine</div>
+          </div>
+          <div class="arch-layer-desc">app.js</div>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">↕ reads / writes</div>
+
+        <div class="arch-layer" role="listitem">
+          <div class="arch-layer-dot" style="background: var(--yellow);" aria-hidden="true"></div>
+          <div>
+            <div class="arch-layer-title">Lab Challenge Definitions</div>
+          </div>
+          <div class="arch-layer-desc">LAB_DATA[]</div>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">↕ renders to</div>
+
+        <div class="arch-layer" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;" role="listitem">
+          <div>
+            <div class="arch-layer-title" style="font-size: 10px;">Sidebar Nav</div>
+            <div class="arch-layer-desc" style="font-size: 9px;">labs.html</div>
+          </div>
+          <div>
+            <div class="arch-layer-title" style="font-size: 10px;">Code Editor</div>
+            <div class="arch-layer-desc" style="font-size: 9px;">&lt;textarea&gt;</div>
+          </div>
+          <div>
+            <div class="arch-layer-title" style="font-size: 10px;">Chaos Monitor</div>
+            <div class="arch-layer-desc" style="font-size: 9px;">Right Panel</div>
+          </div>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">↕ persists to</div>
+
+        <div class="arch-layer" role="listitem">
+          <div class="arch-layer-dot" style="background: var(--orange);" aria-hidden="true"></div>
+          <div>
+            <div class="arch-layer-title">Student Progress State</div>
+          </div>
+          <div class="arch-layer-desc">sessionStorage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <div class="nav-logo" style="margin-bottom: 8px; display: inline-flex;">
+          <div class="nav-logo-mark">PF</div>
+          ProdFoundry
+        </div><br>
+        <span>A browser-native educational platform. Zero servers. Zero frameworks.</span>
+      </div>
+      <ul class="footer-links" role="list" aria-label="Footer navigation">
+        <li><a href="labs.html">Labs</a></li>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#pillars">Curriculum</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── Hero Terminal Animation ────────────────────────────────
+(function initHeroTerminal() {
+  const lines = [
+    { type: 'prompt', cmd: 'npm run stress-test', delay: 400 },
+    { type: 'out', text: 'Initializing ProdFoundry v2.4.1...', delay: 900 },
+    { type: 'out', text: 'Loading challenge: reliability-lab-01', delay: 1300 },
+    { type: 'gap', delay: 1600 },
+    { type: 'warn', text: '⚠  Unhandled Promise rejection detected', delay: 1900 },
+    { type: 'err',  text: '✗  TypeError: Cannot read prop of undefined', delay: 2400 },
+    { type: 'err',  text: '✗  API fallback: MISSING', delay: 2800 },
+    { type: 'gap', delay: 3100 },
+    { type: 'prompt', cmd: '// fix: add try/catch + fallback', delay: 3400 },
+    { type: 'gap', delay: 3700 },
+    { type: 'success', text: '✓  Error boundary: ACTIVE', delay: 4100 },
+    { type: 'success', text: '✓  Fallback UI: RENDERING', delay: 4500 },
+    { type: 'success', text: '✓  Promise guard: PASSED', delay: 4900 },
+    { type: 'gap', delay: 5200 },
+    { type: 'success', text: '◉ Lab Score: 100/100 — PRODUCTION READY', delay: 5600 },
+    { type: 'cursor', delay: 6000 },
+  ];
+
+  const body = document.getElementById('hero-terminal-body');
+  if (!body) return;
+
+  lines.forEach(({ type, cmd, text, delay }) => {
+    setTimeout(() => {
+      const line = document.createElement('div');
+
+      if (type === 'gap') {
+        line.className = 't-line t-gap';
+        line.style.animationDelay = '0ms';
+      } else if (type === 'cursor') {
+        const cur = document.createElement('span');
+        cur.className = 't-cursor';
+        body.appendChild(cur);
+        return;
+      } else {
+        line.className = 't-line';
+        line.style.animationDelay = '0ms';
+
+        if (type === 'prompt') {
+          line.innerHTML = `<span class="t-prompt">$</span><span class="t-cmd">${cmd}</span>`;
+        } else if (type === 'out') {
+          line.innerHTML = `<span class="t-out">${text}</span>`;
+        } else if (type === 'err') {
+          line.innerHTML = `<span class="t-err">${text}</span>`;
+        } else if (type === 'success') {
+          line.innerHTML = `<span class="t-success">${text}</span>`;
+        } else if (type === 'warn') {
+          line.innerHTML = `<span class="t-warn">${text}</span>`;
+        }
+      }
+
+      // Remove old cursor if present
+      const oldCursor = body.querySelector('.t-cursor');
+      if (oldCursor) oldCursor.remove();
+
+      body.appendChild(line);
+      body.scrollTop = body.scrollHeight;
+    }, delay);
+  });
+})();
+
+// ─── Scroll Reveal ──────────────────────────────────────────
+(function initReveal() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger sibling reveals
+          const siblings = entry.target.parentElement
+            ? [...entry.target.parentElement.querySelectorAll('.reveal:not(.revealed)')]
+            : [];
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('revealed');
+          }, idx * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>

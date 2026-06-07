@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ProdFoundry Hardening Labs — Interactive challenges to learn reliability, security, scalability, and UX engineering.">
+  <title>ProdFoundry · Hardening Labs</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e5ff'/><text x='6' y='22' font-size='16' font-weight='900' font-family='monospace' fill='%23080a0d'>PF</text></svg>">
+</head>
+<body>
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LAB SHELL — 3-Column Dashboard Grid
+═══════════════════════════════════════════════════════════ -->
+<div class="lab-shell" id="lab-shell" role="application" aria-label="ProdFoundry Interactive Learning Lab">
+
+  <!-- ── Lab Nav Header ─────────────────────────────────── -->
+  <header class="lab-nav" role="banner">
+    <a href="index.html" class="nav-logo" aria-label="Back to ProdFoundry homepage">
+      <div class="nav-logo-mark" aria-hidden="true">PF</div>
+      ProdFoundry
+    </a>
+    <div class="lab-nav-badge" aria-label="Hardening Labs">Hardening Labs</div>
+
+    <div class="lab-nav-spacer"></div>
+
+    <div class="lab-progress-area" role="complementary" aria-label="Progress tracker">
+      <span aria-label="Lab progress">
+        <span id="lab-progress-label" aria-live="polite">0/4 complete</span>
+      </span>
+      <div class="lab-progress-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Overall completion">
+        <div class="lab-progress-bar-fill" id="lab-progress-fill"></div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn btn-ghost" style="font-size: var(--text-xs); padding: 8px 16px; margin-left: var(--space-4);">
+      ← Back to Home
+    </a>
+  </header>
+
+  <!-- ── Left Sidebar ───────────────────────────────────── -->
+  <aside class="lab-sidebar" role="navigation" aria-label="Lab category navigation">
+    <div class="sidebar-section-title" aria-hidden="true">
+      <span>◎</span> MODULES
+    </div>
+
+    <!-- Nav items rendered by JS -->
+    <div id="lab-nav-list" role="list" aria-label="Available lab challenges"></div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-score" role="status" aria-live="polite" aria-label="Current score">
+        <span class="sidebar-score-val" id="sidebar-score-val">0%</span>
+        Score
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Center Workspace ───────────────────────────────── -->
+  <main class="lab-workspace" role="main" aria-label="Code editor workspace">
+
+    <!-- Workspace Tabs -->
+    <div class="workspace-header" role="toolbar" aria-label="Editor controls">
+      <div class="workspace-tab" role="tab" aria-selected="true">
+        <div class="workspace-tab-dot" aria-hidden="true"></div>
+        <span id="workspace-tab-name">loading...</span>
+      </div>
+      <div class="workspace-actions">
+        <button
+          id="btn-hint"
+          class="btn btn-ghost"
+          style="font-size: var(--text-xs); padding: 6px 14px;"
+          aria-label="Show solution — inserts passing code into editor"
+          title="Show a passing solution"
+        >
+          Show Solution
+        </button>
+      </div>
+    </div>
+
+    <!-- Lab Description -->
+    <div class="lab-description" role="region" aria-labelledby="lab-title">
+      <h2 id="lab-title" style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">
+        Loading Lab...
+      </h2>
+      <p id="lab-desc" style="font-size: var(--text-sm); color: var(--fg-secondary);">
+        Select a module from the left sidebar to begin.
+      </p>
+      <div id="objective-list" class="objective-list" role="list" aria-label="Required objectives to pass this lab">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Code Editor -->
+    <div class="editor-container" role="region" aria-label="Code editor">
+      <div class="editor-gutter" aria-hidden="true" id="editor-gutter">
+        <!-- Line numbers rendered by JS -->
+      </div>
+      <textarea
+        id="code-editor"
+        class="code-editor"
+        spellcheck="false"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        aria-label="Code editor — write your solution here. Tab key inserts spaces."
+        aria-multiline="true"
+        aria-describedby="lab-desc"
+        placeholder="// Select a module to start coding..."
+      ></textarea>
+    </div>
+
+    <!-- Run Bar -->
+    <div class="run-bar" role="toolbar" aria-label="Test runner controls">
+      <span class="run-hint" aria-hidden="true">
+        Fix the code above · Tab = 2 spaces · Objectives update live
+      </span>
+      <div class="run-bar-btns">
+        <button
+          id="btn-reset"
+          class="btn-reset"
+          aria-label="Reset code to the original broken starter code"
+          title="Reset to broken starter code"
+        >
+          ↺ Reset
+        </button>
+        <button
+          id="btn-run"
+          class="btn-stress"
+          aria-label="Run the stress test against your code"
+          title="Run Stress Test"
+        >
+          <span aria-hidden="true">⚡</span> Run Stress Test
+        </button>
+      </div>
+    </div>
+
+    <!-- Success Overlay -->
+    <div
+      id="success-overlay"
+      class="success-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="success-title"
+      aria-describedby="success-sub"
+    >
+      <div class="success-icon" aria-hidden="true">✦</div>
+      <h3 class="success-title" id="success-title">Lab Passed</h3>
+      <p class="success-sub" id="success-sub">All checks green. Production-ready.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <button
+          id="btn-next-lab"
+          class="btn btn-success"
+          aria-label="Continue to the next lab"
+        >
+          Next Lab →
+        </button>
+        <button
+          id="btn-dismiss"
+          class="btn btn-ghost"
+          aria-label="Dismiss this success message and stay in the current lab"
+        >
+          Stay Here
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Right Panel — Chaos Monitor ───────────────────── -->
+  <aside class="chaos-monitor" role="complementary" aria-label="Chaos Monitor — real-time stress test results">
+
+    <!-- Monitor Header -->
+    <div class="monitor-header">
+      <div class="terminal-dot" style="background:#ff5f56" aria-hidden="true"></div>
+      <div class="terminal-dot" style="background:#ffbd2e" aria-hidden="true"></div>
+      <div class="terminal-dot" style="background:#27c93f" aria-hidden="true"></div>
+      <div class="monitor-title">CHAOS MONITOR</div>
+      <div
+        class="monitor-status-led idle"
+        id="monitor-status-led"
+        role="status"
+        aria-live="polite"
+        aria-label="Monitor status: idle"
+      ></div>
+    </div>
+
+    <!-- Metric Gauges -->
+    <div class="gauge-panel" id="gauge-panel" role="region" aria-label="Live performance metrics">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- Check List -->
+    <div class="checks-panel" id="checks-panel" role="log" aria-live="polite" aria-label="Stress test checks">
+      <div class="checks-label" aria-hidden="true">Stress Test Checks</div>
+      <div style="text-align: center; padding: var(--space-7) 0; color: var(--fg-dim); font-family: var(--font-mono); font-size: var(--text-xs);">
+        Run a stress test to see<br>live diagnostics here.
+      </div>
+    </div>
+
+    <!-- Simulated Terminal Output -->
+    <div class="terminal-panel" role="log" aria-label="Terminal output from stress test">
+      <div class="terminal-panel-header">
+        <div class="terminal-dot" style="background:#3a3a3a" aria-hidden="true"></div>
+        <div class="terminal-dot" style="background:#3a3a3a" aria-hidden="true"></div>
+        <div class="terminal-dot" style="background:#3a3a3a" aria-hidden="true"></div>
+        <span class="terminal-panel-title">terminal output</span>
+      </div>
+      <pre
+        class="terminal-output"
+        id="terminal-output"
+        aria-label="Terminal log output"
+        aria-live="polite"
+      ><span class="t-output-line t-out-info">// Waiting for stress test... click "Run Stress Test" to begin.</span>
+</pre>
+    </div>
+  </aside>
+
+</div><!-- end .lab-shell -->
+
+<script src="app.js"></script>
+</body>
+</html>
